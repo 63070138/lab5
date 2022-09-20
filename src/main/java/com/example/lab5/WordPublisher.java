@@ -19,7 +19,7 @@ public class WordPublisher{
         words = new Word();
 
     }
-    @RequestMapping(value="/addBad/{word}", method = RequestMethod.GET)
+    @RequestMapping(value="/addBad/{word}", method = RequestMethod.POST)
     public ArrayList<String> addBadWord(@PathVariable("word") String s){
         words.badWords.add(s);
         return words.badWords;
@@ -31,7 +31,7 @@ public class WordPublisher{
         return words.badWords;
     }
 
-    @RequestMapping(value="/addGood/{word}", method = RequestMethod.GET)
+    @RequestMapping(value="/addGood/{word}", method = RequestMethod.POST)
     public ArrayList<String> addGoodWord(@PathVariable("word") String s){
         words.goodWords.add(s);
         return words.goodWords;
@@ -43,7 +43,7 @@ public class WordPublisher{
         return words.goodWords;
     }
 
-    @RequestMapping(value="/proof/{sentence}", method = RequestMethod.GET)
+    @RequestMapping(value="/proof/{sentence}", method = RequestMethod.POST)
     public void proofSentence(@PathVariable("sentence") String s){
         boolean checkGood = false, checkBad = false;
         for (String text : words.goodWords)
